@@ -1,0 +1,44 @@
+<html>
+    <body>
+        <head>
+            <h1>this is a big head</h1>
+            name <input id="simon" type=text><br>
+            price <input id="si-price" type=text><br>
+            <button onclick="myfunction()">click to filter (prices)</button><br>
+            <button onclick="search()">try</button>
+           
+
+            <div id="spring"></div>
+            <p id="dimond"></p>
+            <script>
+                const text='[{"name":"yas", "price": 20, "location":"st laurant"},\
+                {"name":"rose", "price": 15, "location":"rideau st"},\
+                {"name":"atlasi", "price": 30, "location":"bank st"}]'
+                const myline=JSON.parse(text)
+                function myfunction(){
+                    myline.sort(
+                        function(a,b){ 
+                        return a.price-b.price
+                    });
+                    document.getElementById('dimond').innerHTML=JSON.stringify(myline);
+                }
+
+                function search(){
+                    let found=false;
+                    for(i= myline.length-1; i>=0; i--) {
+                        if (myline[i].name==document.getElementById('simon').value|| myline[i].price==document.getElementById('si-price').value){
+                            document.getElementById('spring').innerHTML=myline[i].name+myline[i].price+myline[i].location
+                            found=true;
+                            alert('there is');
+                        }
+                    }
+                    if (found==false){
+                        alert('there is not');
+                }
+                    
+                }    
+            </script>
+
+        </head>
+    </body>
+</html>
